@@ -10,7 +10,6 @@ import uploadRouter from './routers/upload.router.js';
 
 import { dbconnect } from './config/database.config.js';
 import path, { dirname } from 'path';
-dbconnect();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -39,5 +38,6 @@ app.get('*', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
+  dbconnect();
   console.log('listening on port ' + PORT);
 });
